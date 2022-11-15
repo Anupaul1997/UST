@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+
+    <!-- Boxicons CDN Link -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/dashboard_styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/rating.css" />
+</head>
+
+<body>
+
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+
+                <span class="logo_name"> <span> </span></span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/dashboard" class="active">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/viewprofile">
+                        <i class='bx bx-box'></i>
+                        <span class="links_name">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/editpassword">
+                        <i class='bx bx-key'></i>
+                        <span class="links_name">Change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/myorderlist">
+                        <i class='bx bx-list-ul'></i>
+                        <span class="links_name">My Orders</span>
+                    </a>
+                </li>
+
+
+                <li class="log_out">
+                    <a href="/logout">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button text-white justify-content-between">
+
+
+                    <span>BRING MY FOOD-KITCHEN</span>
+
+
+                </div>
+
+
+            </nav>
+            <div class="homepage py-4">
+                <div class="pt-5 mt-2 ">
+
+                    <div class="container mt-5 mb-3 pb-5" style="background: rgba(0, 0, 0, 0.5);">
+                        <h2 class="text-white text-center">CHOOSE YOUR TABLE</h2>
+
+                        <form method="POST">
+                            <div class="row justify-content-center">
+                                {% for table_detail in table_details %}
+
+                                {% if table_detail.phone==session._id %}
+                                <div class="card col-lg-5  shadow-sm pr-1 pl-1 ">
+                                    <div class="card-header bg-secondary text-center ">
+                                        <h5>Table No : {{table_detail._id}}</h5>
+                                    </div>
+                                    <div class="card-body bg-light fw-bold">
+                                        Order : <table class="text-center">
+                                            <tr>
+                                                <th>Item</th>
+                                                <th></th>
+                                                <th>Quantity</th>
+                                                <th></th>
+                                                <th>Rate</th>
+                                            </tr>
+                                            {% for i in table_detail.orderlist: %}
+
+                                            <tr>{% for j in i.keys(): %}
+                                                <td>{{j}}</td>
+                                                <td>:</td>
+                                                <td>{{i[j][0]}}</td>
+                                                <td>:</td>
+                                                <td>{{i[j][1]['price']}}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            {% endfor %}
+
+                                        </table>
+                                        <br><br>
+                                        Total Amount : {{table_detail.total_amonut}}
+                                    </div>
+                                    
+                                            <button class="btn btn-outline-dark text-success text-center" type="submit"
+                                            formaction="/placeorder/{{table_detail._id}}" formmethod="GET">
+                                            CHANGE</button>
+
+                                        
+                                    
+
+                                </div>
+                                {% endif %}
+
+
+
+
+
+
+                                </tr>
+                                {% endfor %}
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- Analytics -->
+
+
+    </body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+
+    <!-- Boxicons CDN Link -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/dashboard_styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/rating.css" />
+</head>
+
+
+<body>
+
+
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+
+                <span class="logo_name"> <span> </span></span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/admindashboard" class="active">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">ORDERS</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/menu">
+                        <i class='bx bx-list-ul'></i>
+                        <span class="links_name">MENU ITEMS</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/addmenu">
+                        <i class='bx bx-box'></i>
+                        <span class="links_name">ADD MENU</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/viewrating">
+                        <i class="bx bx-star"></i>
+                        <span class="links_name">VIEW RATING</span>
+                    </a>
+                </li>
+
+
+                <li class="log_out">
+                    <a href="/logout">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button text-white justify-content-between">
+
+
+                    <span>BRING MY FOOD-KITCHEN</span>
+
+
+                </div>
+
+
+            </nav>
+            <div class="homepage py-4">
+                <div class="pt-5 mt-5 ">
+                    <div class="container mt-5 mb-3 pb-5" style="background: rgba(0, 0, 0, 0.5);">
+                        <h2 class="text-white text-center">ITEMS LIST</h2>
+                        <div class="bg-light p-5 mr-5 ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Item</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Rate</h4>
+                                </div>
+                            </div>
+                            <hr>
+                            {% for i in menulist %}
+                            <div class="row">
+                                <div class="col-md-6">{{i["item"]}}</div>
+                                <div class="col-md-2">{{i["price"]}}</div>
+                            </div>
+                            <hr>
+                            {% endfor %}
+
+                            <div class="row">
+                                <button type="button" onclick="location.href='/addmenu'" class="btn btn-dark col-md-6">ADD</button>
+                                <button type="button" onclick="location.href='/admindashboard'" class="btn btn-outline-danger col-md-6">CANCEL</button>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- Analytics -->
+
+
+    </body>
+
+</html>
